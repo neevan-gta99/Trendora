@@ -98,6 +98,11 @@
     @apply pt-1 pb-1 pr-5 pl-5 border border-black text-black transition-all duration-700 hover:bg-black hover:text-white hover:rounded-md;
 }
 
+.logout-btn-with-scroll {
+    @apply pt-1 pb-1 pr-5 pl-5 border border-black text-black transition-all duration-700 hover:bg-black hover:text-white hover:rounded-md;
+
+}
+
 /* bottom navbar css */
 .dropdown-pointer {
     @apply transition-transform duration-300;
@@ -124,76 +129,198 @@
 
 }
 
-.section-heading {
-  @apply m-5 text-2xl font-bold text-center;
-  color: crimson;
-}
+/* Update your CSS: Product Card*/
+
+
 
 .section-wear {
-  @apply flex flex-wrap justify-center gap-4 m-5 w-full;
+    @apply flex flex-wrap justify-center gap-5 m-5 w-full;
 }
 
 .section-offer {
-  @apply flex flex-col items-center p-4 transition-all duration-300 ease-in-out;
+    @apply flex flex-col items-center p-4 transition-all duration-300 ease-in-out;
 
-  border: 1px solid crimson;
+    border: 1px solid crimson;
 
-  /* Responsive widths */
-  width: 90%; /* Mobile default */
-
-  gap: 0.545rem;
+    /* Better responsive widths */
+    width: 100%;
+    /* Mobile default */
+    min-width: 280px;
+    /* Minimum width */
+    max-width: 320px;
+    /* Maximum width */
+    margin: 0 auto;
+    /* Center align */
 }
 
-.section-item-name{
-    @apply font-bold;
+.section-offer-2 {
+    @apply flex flex-col items-center p-4 transition-all duration-300 ease-in-out;
 
-    font-size: 0.995rem;
-    line-height: 1rem;
-    margin-top: 1px;
+    border: 1px solid crimson;
 
-}
-.section-item-subcategory{
-
-    @apply text-sm font-semibold;
-
-    color: gray;
-
-}
-.section-item-discount{
-    @apply font-medium;
-
-    font-size: medium;
-    color: crimson;
-    font-weight: 600;
-}
-.section-item-finalprice{
-    @apply text-black font-bold;
+    /* Better responsive widths */
+    width: 100%;
+    /* Mobile default */
+    min-width: 180px;
+    /* Minimum width */
+    max-width: 280px;
+    /* Maximum width */
+    margin: 0 auto;
+    /* Center align */
 }
 
-@media (min-width: 640px) { /* sm: */
-  .section-offer {
-    width: 45%;
-  }
+.section-offer-2:hover{
+    border-radius: 12px;
+    transform: translateY(-5px);
+    cursor: pointer;
 }
 
-@media (min-width: 768px) { /* md: */
-  .section-offer {
-    width: 30%;
-  }
+/* Remove or update these media queries */
+@media (min-width: 640px) {
+
+    /* sm: */
+   .section-offer-2 {
+        width: 20%;
+        min-width: 200px;
+    }
+
+    .section-offer {
+        width: 45%;
+        min-width: 280px;
+    }
+
+    .section-heading {
+        color: crimson;
+        font-size: 1.7rem;
+        font-weight: 500;
+    }
 }
 
-@media (min-width: 1024px) { /* lg: */
-  .section-offer {
-    width: 15%;
-  }
+@media (min-width: 768px) {
+
+    /* md: */
+     .section-offer-2 {
+        width: 20%;
+        min-width: 200px;
+    }
+
+    .section-offer {
+        width: 45%;
+        min-width: 280px;
+    }
+
+    .section-heading {
+        color: crimson;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* lg: */
+    .section-offer-2 {
+        width: 15%;
+        min-width: 150px;
+    }
+
+    .section-offer {
+        width: 30%;
+        min-width: 280px;
+    }
+
+    .section-heading {
+        color: crimson;
+        font-size: 1.9rem;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    /* xl: */
+    .section-offer-2 {
+        width: 15%;
+        min-width: 150px;
+    }
+
+    .section-offer {
+        width: 23%;
+        min-width: 280px;
+    }
+
+    .section-heading {
+        color: crimson;
+        font-size: 2rem;
+        font-weight: 500;
+    }
 }
 
 .section-offer:hover {
-  @apply shadow-2xl rounded-xl cursor-pointer;
+    @apply shadow-xl cursor-pointer;
+    transform: translateY(-5px);
+    border-radius: 12px;
+    /* Added rounded corners */
+    /* Add lift effect */
 }
 
 .section-imgs {
-  @apply w-full h-[300px] object-cover rounded-lg;
+    @apply w-full h-[250px] object-cover rounded-lg mb-3;
+    /* Changed to contain for better fit */
+}
+
+/* Better text styling */
+.section-item-name {
+    @apply font-bold text-center;
+    font-size: 1rem;
+    min-height: 2.4rem;
+    color: crimson;
+    /* Fixed height for consistency */
+}
+
+.section-item-brand {
+    @apply font-bold text-center;
+    font-size: 0.8rem;
+    min-height: 2.2rem;
+    color: crimson;
+    /* Fixed height for consistency */
+}
+
+.section-item-subcategory {
+    @apply text-sm font-semibold text-center mb-1;
+    color: gray;
+}
+
+.section-item-discount {
+    @apply font-medium text-center mb-1;
+    font-size: 0.9rem;
+    color: crimson;
+    font-weight: 600;
+}
+
+.section-item-finalprice {
+    @apply text-black font-bold text-center text-lg mb-3;
+}
+
+.section-item-price {
+    @apply text-gray-500 text-sm line-through;
+    /* Optional: Add some margin or alignment */
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #dc143c, #b22222);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .women-heading {
@@ -349,38 +476,79 @@
 }
 
 .seller-main-navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .showcase-section {
     background-color: aquamarine;
-    display: flex;              /* row layout */
-    justify-content: center;    /* center horizontally */
-    align-items: flex-start;    /* top align (ya center agar chaho) */
-    gap: 2rem;                  /* dono columns ke beech gap */
-    padding: 2rem;              /* andar ka spacing */
+    display: flex;
+    /* row layout */
+    justify-content: center;
+    /* center horizontally */
+    align-items: flex-start;
+    /* top align (ya center agar chaho) */
+    gap: 2rem;
+    /* dono columns ke beech gap */
+    padding: 2rem;
+    /* andar ka spacing */
     width: 100%;
     box-sizing: border-box;
 }
 
 .showcase-section-filter {
-    flex: 0 0 30%;              /* 30% width fix */
-    max-width: 300px;           /* optional limit */
+    flex: 0 0 30%;
+    /* 30% width fix */
+    max-width: 300px;
+    /* optional limit */
     padding: 1rem;
     border: 2px solid red;
-    background: #fff;           /* thoda contrast ke liye */
+    background: #fff;
+    /* thoda contrast ke liye */
     border-radius: 8px;
 }
 
 .showcase-section-products {
-    flex: 1;                    /* bacha hua space le */
-    min-width: 0;               /* text overflow fix */
+    flex: 1;
+    /* bacha hua space le */
+    min-width: 0;
+    /* text overflow fix */
     padding: 1rem;
     border: 2px solid violet;
     background: #fff;
     border-radius: 8px;
+}
+
+/*  Footer */
+
+.footer-wrapper {
+    @apply bg-black text-white flex flex-row justify-between items-start gap-6 px-8 py-10 w-full flex-wrap mt-8;
+}
+
+
+.footer-section {
+    @apply flex flex-col gap-2;
+}
+
+.footer-title {
+    @apply text-xl font-bold;
+}
+
+.footer-subtitle {
+    @apply text-lg font-semibold mt-2;
+}
+
+.footer-text {
+    @apply text-sm text-gray-400;
+}
+
+.footer-list {
+    @apply list-none space-y-1 text-gray-400;
+}
+
+.footer-list li a {
+    @apply hover:text-white transition-colors;
 }

@@ -1,4 +1,10 @@
-import MensWear from "./Mens/MensWear";
+import Bags from "./HomeComponents/Bags";
+import BoysBrands from "./HomeComponents/BoysBrands";
+import GirlsGrands from "./HomeComponents/GirlsGrands";
+import Luggages from "./HomeComponents/Luggages";
+import MensWear from "./HomeComponents/MensWear";
+import Suitcases from "./HomeComponents/Suitcases";
+import WomensWear from "./HomeComponents/WomensWear";
 
 const Home = () => {
 
@@ -41,47 +47,11 @@ const Home = () => {
 
             {/* Mens */}
 
-           <MensWear/>
+            <MensWear />
 
             {/* Womens */}
 
-            <section className="flex justify-center items-center flex-col mt-16 w-screen bg-white">
-                <div className="women-heading">
-                    <h1>Women's Wear</h1>
-                </div>
-                <div className="women-wear">
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                    <div className="women-offer">
-                        <img src="/mensImgs/t-shirt.webp" alt="" className="women-imgs"/>
-                        <h4>T-shirt</h4>
-                        <h3>40% Off</h3>
-                    </div>
-                </div>
-            </section>
+            <WomensWear />
 
             {/* Offers carousel */}
 
@@ -92,86 +62,8 @@ const Home = () => {
             {/* Kids */}
             <section className="mt-16">
                 <div className="flex justify-center">
-                    <div className="boys-girls">
-                        <div className="text-center">
-                            <h1>Boys's Brands</h1>
-                        </div>
-
-                        <div className="brands-grands">
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div className="boys-girls">
-                        <div className="text-center">
-                            <h1>Boys's Brands</h1>
-                        </div>
-
-                        <div className="brands-grands">
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="brands-grands-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" className="brands-grands-imgs" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                        </div>
-
-
-                    </div>
+                    <BoysBrands />
+                    <GirlsGrands />
                 </div>
             </section>
 
@@ -184,127 +76,21 @@ const Home = () => {
 
             {/* Bags... */}
 
-            <section  className="mt-16">
+            <section className="mt-16">
                 <div className="flex justify-center">
                     <div className="bags-suitcases-luggage">
-                        <div className="text-center">
-                            <h1>Bags</h1>
-                        </div>
 
-                        <div className="bags">
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                        </div>
-
+                        <Bags />
 
                     </div>
                     <div className="bags-suitcases-luggage">
-                        <div className="text-center">
-                            <h1>Suitcases</h1>
-                        </div>
 
-                        <div  className="suitcases">
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                        </div>
-
+                        <Suitcases />
 
                     </div>
-                     <div className="bags-suitcases-luggage">
-                        <div className="text-center">
-                            <h1>Luggage</h1>
-                        </div>
+                    <div className="bags-suitcases-luggage">
 
-                        <div className="luggage">
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                            <div className="bags-suitcases-luggage-offer">
-                                <img src="/mensImgs/t-shirt.webp" alt="" />
-                                <h4>T-shirt</h4>
-                                <h3>40% Off</h3>
-                            </div>
-                        </div>
-
-
+                        <Luggages />
                     </div>
                 </div>
             </section>

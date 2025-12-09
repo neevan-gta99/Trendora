@@ -56,6 +56,8 @@ import SellerApproval from "./pages/admin/SellerApproval"
 import SupportSystem from "./pages/admin/SupportSystem"
 import AdminLogin from "./pages/admin/AdminLogin"
 import ProtectedAdminRoute from "./pages/admin/ProtectedAdminRoute"
+import Profile from "./pages/customer/Profile"
+import ViewDetails from "./Components/ViewDetails"
 
 const AppRoutes = () => {
 
@@ -65,7 +67,11 @@ const AppRoutes = () => {
             {/* Customer Layout */}
             <Route path="/" element={<CustomerLayout />}>
                 <Route index element={<Home />} />
-                <Route path="men-topwear" element={<MenTopwear />} />
+
+                <Route path="showcase" element={<ShowCase />} />
+                <Route path="view-details" element={<ViewDetails />} />
+
+                {/* <Route path="men-topwear" element={<MenTopwear />} />
                 <Route path="men-bottomwear" element={<MenBottomwear />} />
                 <Route path="men-footwear" element={<MenFootwear />} />
                 <Route path="women-ethnic" element={<WomenEthnic />} />
@@ -80,12 +86,15 @@ const AppRoutes = () => {
                 <Route path="bags" element={<Bags />} />
                 <Route path="suitcases" element={<Suitcases />} />
                 <Route path="luggages" element={<Luggage />} />
-                <Route path="showcase" element={<ShowCase />} />
+                <Route path="showcase" element={<ShowCase />} /> */}
+
+                {/* Auth Routes */}
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/profile" element={<Profile />} />
             </Route>
 
-            {/* Auth Routes */}
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/signup" element={<SignUp />} />
+
 
             {/* Seller Layout */}
             <Route path="/seller" element={<SellerLayout />}>
@@ -129,13 +138,13 @@ const AppRoutes = () => {
 
 
             <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<ProtectedAdminRoute> <AdminDashboard /> </ProtectedAdminRoute> } />
-                <Route path="dashboard" element={<ProtectedAdminRoute> <AdminDashboard /> </ProtectedAdminRoute> } />
-                <Route path="dashboard/:adminId" element={<ProtectedAdminRoute> <AdminDashboard /></ProtectedAdminRoute> } />
+                <Route index element={<ProtectedAdminRoute> <AdminDashboard /> </ProtectedAdminRoute>} />
+                <Route path="dashboard" element={<ProtectedAdminRoute> <AdminDashboard /> </ProtectedAdminRoute>} />
+                <Route path="dashboard/:adminId" element={<ProtectedAdminRoute> <AdminDashboard /></ProtectedAdminRoute>} />
                 <Route path="login" element={<AdminLogin />} />
-                
+
                 {/* <Route path="db-migration" element={<DBMigration />} /> */}
-                <Route path="seller-monitor" element={<SellerMonitor  />} />
+                <Route path="seller-monitor" element={<SellerMonitor />} />
                 <Route path="seller-management" element={<SellerManagement />} />
                 <Route path="seller-approval" element={<SellerApproval />} />
                 <Route path="support" element={<SupportSystem />} />

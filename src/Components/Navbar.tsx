@@ -1,5 +1,8 @@
+import { logoutCustomerSession } from "@/redux/features/customer/customerAuthSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import type { RootState } from "@/redux/store/store";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -32,18 +35,49 @@ const Navbar = () => {
         {
             key: [{ key: "bags", label: "Bags" },
             { key: "suitcases", label: "Suitcase" },
-            { key: "luggage", label: "Luggage" }],
-            label: "Bags, Suits And Lugage"
+            { key: "luggages", label: "luggages" }],
+            label: "Bags, Suits And Luggages"
         }
 
     ];
 
     const [scrolled, setScrolled] = useState(false);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    const isOnHomePage = location.pathname === "/";
+    const isOnLoginPage = location.pathname === "/login";
+    const isOnSignupPage = location.pathname === "/signup";
+
+    const loginTimestamp = useAppSelector((state: RootState) => state.customerAuth.loginTimestamp);
+
+     const handleLogout = async () => {
+                try {
+                    dispatch(logoutCustomerSession()).then(() => {
+                        navigate("/login");
+                    });
+        
+        
+                } catch (error) {
+        
+                    navigate("/");
+                }
+            };
 
 
+    useEffect(() => {
 
+        if (loginTimestamp != null) {
+            setIsLoggedIn(true);
+        }
+        else {
+            setIsLoggedIn(false)
+        }
 
+    }, [pathname])
 
     useEffect(() => {
 
@@ -55,11 +89,7 @@ const Navbar = () => {
 
         return () => window.removeEventListener('scroll', handleScroll);
 
-
     }, []);
-
-
-
 
 
     return (<>
@@ -77,9 +107,49 @@ const Navbar = () => {
                     <NavLink to="/seller" className={scrolled ? "hover-underline-with-scroll" : "hover-underline-without-scroll"}>Become A Seller</NavLink>
                 </div>
                 <div className="login-signup">
-                    <NavLink to="/login" className={scrolled ? "login-btn-with-scroll": "login-btn-without-scroll"}>Login</NavLink>
-                    <NavLink to="/signup" className={scrolled ? "signup-btn-with-scroll" : "signup-btn-without-scroll"}>Signup</NavLink>
+                    {isLoggedIn ? (
+                        <NavLink
+                            to="/profile"
+                            className={scrolled ? "login-btn-with-scroll" : "login-btn-without-scroll"}
+                        >
+                            Profile
+                        </NavLink>
+                    ) : (
+                        <>
+                            {isOnHomePage ? (
+                                <>
+                                    <NavLink
+                                        to="/login"
+                                        className={scrolled ? "login-btn-with-scroll" : "login-btn-without-scroll"}
+                                    >
+                                        Login
+                                    </NavLink>
+                                    <NavLink
+                                        to="/signup"
+                                        className={scrolled ? "signup-btn-with-scroll" : "signup-btn-without-scroll"}
+                                    >
+                                        Signup
+                                    </NavLink>
+                                </>
+                            ) : isOnLoginPage ? (
+                                <NavLink
+                                    to="/signup"
+                                    className={scrolled ? "signup-btn-with-scroll" : "signup-btn-without-scroll"}
+                                >
+                                    Signup
+                                </NavLink>
+                            ) : isOnSignupPage ? (
+                                <NavLink
+                                    to="/login"
+                                    className={scrolled ? "login-btn-with-scroll" : "login-btn-without-scroll"}
+                                >
+                                    Login
+                                </NavLink>
+                            ) : null}
+                        </>
+                    )}
                 </div>
+
             </div>
             <div className={`customer-bottom-navbar ${scrolled ? "border-black" : "border-white"}`}>
                 <ul className="nav-links">
@@ -100,8 +170,12 @@ const Navbar = () => {
                                     className={`dropdown-ul ${openIndex === cIndex ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                                 >
                                     {cItem.key.map((item, index) => (
-                                        <li key={index} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                            <NavLink to={`/${item.key}`}>{item.label}</NavLink>
+                                        <li
+                                            key={index}
+                                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                                            onClick={() => navigate(`/showcase?category=${item.key}`)} // 👈 useNavigate hook
+                                        >
+                                            {item.label}
                                         </li>
                                     ))}
                                 </ul>

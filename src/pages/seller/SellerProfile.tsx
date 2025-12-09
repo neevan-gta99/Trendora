@@ -21,7 +21,6 @@ function SellerProfile() {
            navigate('/seller/profile');
         }
         
-
     },[pathname])
     // useEffect(() => {
 
