@@ -2,7 +2,6 @@ import { BASE_URL } from '@/config/apiConfig.ts';
 import React, { useEffect, useState } from 'react';
 import ProductCard2 from './ProductCard2';
 import { useLocation } from 'react-router-dom';
-
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
 
 const bbdsggdsCategories = [
@@ -52,22 +51,18 @@ const allTabs = [
 ];
 
 function ShowCase() {
-    const [allProducts, setAllProducts] = useState<MiniProduct[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState<MiniProduct[]>([]);
 
     const { search } = useLocation();
 
-    // Get category from URL params
     const category = new URLSearchParams(search).get("category") || "men-topwear";
 
-    console.log("This category: ==>", category);
-    
-    // Find current tab set based on category
+    const [allProducts, setAllProducts] = useState<MiniProduct[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<MiniProduct[]>([]);
+
+
     const currentTabSet = allTabs.find((tabGroup) => tabGroup.key === category)?.tabValues || ['T-Shirt'];
+    console.log(currentTabSet);
 
-    console.log("Current Tabset==>", currentTabSet);
-
-    // Find current endpoint based on category
     const currentEndPoint = endPoints.find((endPoint) => endPoint.key === category)?.label || "get-all-men-topwears";
 
     const [selectedTab, setSelectedTab] = useState<string>(currentTabSet[0] || "T-Shirt");
@@ -76,40 +71,70 @@ function ShowCase() {
     const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedDiscounts, setSelectedDiscounts] = useState<number[]>([]);
+    const [offset, setOffset] = useState(0);
+    const [isFetching, setIsFetching] = useState(false);
 
-    // Reset selected tab when category changes
-    useEffect(() => {
-        setSelectedTab(currentTabSet[0] || "T-Shirt");
-    }, [category, currentTabSet]);
+    let limit = 9;
 
-    console.log("Current Tabset)==>", selectedTab);
-    // Fetch products when category changes
+    useEffect(()=>{
+        setOffset(0);
+        setAllProducts([]);
+    },[category]);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                console.log("Fetching for category:", category);
-                console.log("Using endpoint:", currentEndPoint);
-
+                const limit = 9;
+                console.log("offset-", offset);
+                setIsFetching(true);
                 const getProductsURL = `${BASE_URL}/api/getProduct/${currentEndPoint}`;
-                console.log("Fetching from URL:", getProductsURL);
-
-                const response = await fetch(getProductsURL);
+                console.log("tab -->",currentTabSet);
+                
+                const response = await fetch(getProductsURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        offset,
+                        limit,
+                        tabValues: currentTabSet, // send tab values in body
+                    }),
+                });
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const receivedData = await response.json();
-                console.log("Received data:", receivedData);
-
-                setAllProducts(receivedData.productInfo || []);
+                setAllProducts(prev => [...prev, ...(receivedData.productInfo || [])]);
             } catch (error) {
                 console.error("Error fetching products:", error);
+            }
+
+            finally {
+                setIsFetching(false);
             }
         };
 
         fetchProducts();
-    }, [category, currentEndPoint]);
+    }, [category, currentEndPoint, offset]);
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!isFetching && window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+                setOffset(prev => prev + limit);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isFetching]);
+
+
+    useEffect(() => {
+        setSelectedTab(currentTabSet[0] || "T-Shirt");
+    }, [category, currentTabSet]);
+
+
 
     useEffect(() => {
         if (allProducts.length > 0) {
@@ -149,7 +174,7 @@ function ShowCase() {
 
             setFilteredProducts(filtered);
         }
-    }, [selectedTab, allProducts, minPrice, maxPrice, selectedDiscounts, selectedBrands, selectedSizes, category]); // ✅ add missing deps
+    }, [selectedTab, allProducts, minPrice, maxPrice, selectedDiscounts, selectedBrands, selectedSizes, category]);
 
 
     const toggleSize = (size: string) => {
