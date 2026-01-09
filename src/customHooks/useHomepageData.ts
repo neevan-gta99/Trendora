@@ -1,4 +1,4 @@
-// hooks/useHomepageData.ts
+// hooks/useHomePageData.ts
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from '@/redux/store/store';
