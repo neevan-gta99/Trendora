@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import {useGirlsGrands} from "@/customHooks/useHomePageData";
+import { useGirlsGrands } from '@/customHooks/useHomepageData';
 
 function GirlsGrands() {
   const { products, loading, error, refetch } = useGirlsGrands();
