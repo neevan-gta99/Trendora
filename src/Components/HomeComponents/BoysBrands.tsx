@@ -15,7 +15,6 @@ function BoysBrands() {
     }    
   }, [products]);
 
-  // Handle errors
   if (error) {
     return (
       <section className="flex flex-col items-center mt-16 p-4 bg-white">
@@ -49,7 +48,6 @@ function BoysBrands() {
     );
   }
 
-  // Show empty state
   if (products.length === 0) {
     return (
       <section className="flex flex-col items-center mt-16 p-4 bg-white">
