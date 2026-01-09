@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import { useWomensWear } from '@/customHooks/useHomepageData';
+import { useWomensWear } from '@/customHooks/useHomeRedisData';
 
 function WommensWear() {
   const { products, loading, error, refetch } = useWomensWear();

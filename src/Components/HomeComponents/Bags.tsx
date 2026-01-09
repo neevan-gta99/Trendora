@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import { useBags } from '@/customHooks/useHomepageData';
+import { useBags } from '@/customHooks/useHomeRedisData';
 
 function Bags() {
   const { products, loading, error, refetch } = useBags();

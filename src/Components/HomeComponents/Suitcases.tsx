@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import { useSuitcases } from '@/customHooks/useHomepageData';
+import { useSuitcases } from '@/customHooks/useHomeRedisData';
 
 function Suitcases() {
   const { products, loading, error, refetch } = useSuitcases();

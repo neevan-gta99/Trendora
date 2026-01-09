@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import { useLuggages } from '@/customHooks/useHomepageData';
+import { useLuggages } from '@/customHooks/useHomeRedisData';
 
 function Luggages() {
   const { products, loading, error, refetch } = useLuggages();
