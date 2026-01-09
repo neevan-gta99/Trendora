@@ -6,7 +6,6 @@ import {useBags} from "@/customHooks/useHomePageData";
 
 function Bags() {
   const { products, loading, error, refetch } = useBags();
-
   // Log images (your existing functionality)
   useEffect(() => {
     if (products.length > 0) {
