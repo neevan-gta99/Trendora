@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 import type { MiniProduct } from '@/DTOs/productDetails.ts';
-import { useBoysBrands } from '@/customHooks/useHomeRedisData';
+import { useBoysBrands } from '@/customHooks/home/useRedisLoad';
 
 function BoysBrands() {
   const { products, loading, error, refetch } = useBoysBrands();
