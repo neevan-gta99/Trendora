@@ -103,8 +103,11 @@ function ShowCase() {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+                
                 const receivedData = await response.json();
+
+                // console.log("Here is my product info",receivedData.productInfo);
+                
                 setAllProducts(prev => [...prev, ...(receivedData.productInfo || [])]);
             } catch (error) {
                 console.error("Error fetching products:", error);

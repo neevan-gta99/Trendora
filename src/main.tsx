@@ -2,15 +2,15 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './redux/store/store';
-import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store/store';
 
 createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  // </React.StrictMode>
+    </PersistGate>
+  </Provider>
 );

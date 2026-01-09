@@ -1,3 +1,14 @@
+// DTOs/productDetails.ts
+export type ColorAndStock = {
+  color: string;
+  stock: number;
+};
+
+export type SizeAndVariants = {
+  size: string;
+  variants: ColorAndStock[];
+};
+
 export type MiniProduct = {
   productID: string;
   name: string;
@@ -10,16 +21,11 @@ export type MiniProduct = {
   price: number;
   finalPrice: number;
   images?: { optimizeUrl: string }[];
-};
-
-type ColorAndStock = {
-  color: string;
-  stock: number;
-};
-
-type SizeAndVariants = {
-  size: string;
-  variants: ColorAndStock[];
+  // Additional fields that might exist in your Redis cache
+  hot?: boolean;
+  status?: string;
+  schema?: string;
+  productCode?: string;
 };
 
 export type WholeProduct = {
@@ -47,3 +53,52 @@ export type WholeProduct = {
   hot: boolean;
   sellerID: string;
 };
+
+// For homepage showcase sections
+export interface ShowcaseSection {
+  key: string;
+  redisId: string;
+  data: MiniProduct[]; // Using YOUR MiniProduct type
+  timestamp: string;
+  sourceSchemas: string[];
+  count: number;
+}
+
+export interface HomepageData {
+  productInfo: {
+    metadata: {
+      version: string;
+      cachedAt: string;
+      ttl: number;
+      sectionsCount: number;
+    };
+    showcases: {
+      mensWear: ShowcaseSection;
+      womensWear: ShowcaseSection;
+      boysBrands: ShowcaseSection;
+      girlsGrands: ShowcaseSection;
+      bags: ShowcaseSection;
+      suitcases: ShowcaseSection;
+      luggages: ShowcaseSection;
+    };
+    categories: {
+      mens: string[];
+      womens: string[];
+      boys: string[];
+      girls: string[];
+      accessories: string[];
+    };
+    stats: {
+      totalProducts: number;
+      lastUpdated: string;
+    };
+  }
+}
+
+export interface HomepageState {
+  data: HomepageData | null;
+  loading: boolean;
+  error: string | null;
+  lastFetched: string | null;
+  filteredProducts: MiniProduct[]; // ✅ Naya field add karo
+}
